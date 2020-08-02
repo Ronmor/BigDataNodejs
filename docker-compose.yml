@@ -35,3 +35,17 @@ services:
       - ./full-stack/kafka1/data:/var/lib/kafka/data
     depends_on:
       - zoo1
+      
+  web:
+    image: nodeapp
+    build: .
+    command: "node app.js"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "mongo"
+  mongo:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+      
