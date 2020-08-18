@@ -15,6 +15,9 @@ const kafkaConf = {
 const prefix = "1zj9s76y-";
 const topic = `${prefix}test`;
 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://127.0.0.1:27017/mydb";
+
 const Consumer = new Kafka.Consumer(kafkaConf);
 
 //Consumer.on("message", (message) => {
@@ -36,8 +39,18 @@ Consumer
     setInterval(function() {
       Consumer.consume();
     }, 60);
-  })
-   .on('data', message => {
+  }).on('data', message => {
         console.log(message.value.toString());
-    });
+		
+			MongoClient.connect(url,{ connectTimeoutMS: 30000} ,function(err, db) {
+			if (err) throw err;
+			var dbo = db.db("mydb");
+			dbo.collection("customers").insertOne(JSON.parse(message.value.toString()), function(err, res) {
+			if (err) throw err;
+			console.log("Number of documents inserted: " + res.insertedCount);
+			db.close();
+  });
+});
+		
 
+    });
