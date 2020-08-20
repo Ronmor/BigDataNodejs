@@ -16,7 +16,7 @@ const prefix = "1zj9s76y-";
 const topic = `${prefix}test`;
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://127.0.0.1:27017/mydb";
+var url = "mongodb://172.16.0.3:27017/mydb";
 
 const Consumer = new Kafka.Consumer(kafkaConf);
 
@@ -34,7 +34,9 @@ Consumer
     // Subscribe to the librdtesting-01 topic
     // This makes subsequent consumes read from that topic.
     Consumer.subscribe([topic]);
-
+	
+	console.log("ready")
+	
     // Read one message every 1000 seconds
     setInterval(function() {
       Consumer.consume();
@@ -42,7 +44,7 @@ Consumer
   }).on('data', message => {
         console.log(message.value.toString());
 		
-			MongoClient.connect(url,{ connectTimeoutMS: 30000} ,function(err, db) {
+			MongoClient.connect(url,{useUnifiedTopology: true, useNewUrlParser: true} ,function(err, db) {
 			if (err) throw err;
 			var dbo = db.db("mydb");
 			dbo.collection("customers").insertOne(JSON.parse(message.value.toString()), function(err, res) {
