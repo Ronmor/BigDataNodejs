@@ -1,9 +1,13 @@
 const express = require('express');
+const database = require('./toDoModel');
 const app = express();
 var server = require('http').createServer(app);
 const io = require("socket.io")(server);
 const port = 3000
 
+
+
+database.initializeMongo;
 //------------ kafka------------
 const kafka = require('./kafkaProduce');
 const bodyParser = require('body-parser');
@@ -47,8 +51,16 @@ io.on("connection", (socket) => {
 //const client1 = new kafka.KafkaClient({kafkaHost: "localhost:9092"});
 
 
+//----------database 18 08 2020 ---------
 
 
+app.get('/testFind', function (req, res) {
+  database.ToDo.find(function (err, Todos) {
+    if (err) res.status(500).send({ error: err });
+    console.log(Todos);
+    res.json(Todos);
+  })
+})
 
 
 //------------------------------------

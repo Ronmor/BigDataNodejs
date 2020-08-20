@@ -37,8 +37,8 @@ services:
       - zoo1
       
   web:
-    image: nodeapp
-    build: .
+    image: nodemon
+#    build: .
     command: "node app.js"
     ports:
       - "3000:3000"
@@ -48,4 +48,11 @@ services:
     image: "mongo"
     ports:
       - "27017:27017"
-      
+  adminmongo:
+    image: "mrvautin/adminmongo"
+    ports:
+      - "1234:1234"    
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"

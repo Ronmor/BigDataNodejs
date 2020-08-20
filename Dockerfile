@@ -11,12 +11,12 @@ COPY package*.json ./
 ARG DEBIAN_FRONTEND=noninteractive
 
 
-RUN apt-get update
-RUN apt-get install -y build-essential
-RUN CFLAGS=-I/usr/local/opt/openssl/include LDFLAGS=-L/usr/local/opt/openssl/lib npm install --save node-rdkafka
+#RUN apt-get update
+#RUN apt-get install -y build-essential
+#RUN CFLAGS=-I/usr/local/opt/openssl/include LDFLAGS=-L/usr/local/opt/openssl/lib npm install --save node-rdkafka
 
-RUN npm install openssl
-RUN apt-get install -y librdkafka-dev
+#RUN npm install openssl
+#RUN apt-get install -y librdkafka-dev
 #RUN npm install node-rdkafka
 
 RUN npm install
