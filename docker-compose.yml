@@ -2,16 +2,20 @@
 # ref: https://github.com/simplesteph/kafka-stack-docker-compose/blob/master/full-stack.yml
 version: '3'
 
+networks:
+        clusternetwork:
+
+
 services:
   zoo1:
     image: zookeeper:3.4.9
     restart: unless-stopped
     hostname: zoo1
     ports:
-      - "2181:2181"
+      - "3181:3181"
     environment:
         ZOO_MY_ID: 1
-        ZOO_PORT: 2181
+        ZOO_PORT: 3181
         ZOO_SERVERS: server.1=zoo1:2888:3888
     volumes:
       - ./full-stack/zoo1/data:/data
@@ -27,7 +31,7 @@ services:
       KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka1:19092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
-      KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181"
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:3181"
       KAFKA_BROKER_ID: 1
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -37,17 +41,23 @@ services:
       - zoo1
       
   web:
+<<<<<<< HEAD
     image: nodemon
 #    build: .
+=======
+    image: nodeapp
+>>>>>>> 868484601088dabd875e227e0fe1dd0df8a217c5
     command: "node app.js"
     ports:
-      - "3000:3000"
+      - "3501:3501"
     depends_on:
       - "mongo"
+
   mongo:
     image: "mongo"
     ports:
       - "27017:27017"
+<<<<<<< HEAD
   adminmongo:
     image: "mrvautin/adminmongo"
     ports:
@@ -56,3 +66,25 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+=======
+    networks:
+        clusternetwork:
+            ipv4_address: 172.16.0.3
+    command: mongod --bind_ip 127.0.0.1,172.16.0.3
+  
+  consomer:
+    image: consumer
+    networks:
+        clusternetwork:
+            ipv4_address: 172.16.0.5
+    command: "node kafkaConsume.js"
+    depends_on:
+      - "mongo"
+
+    
+      
+      
+    
+    
+    
+>>>>>>> 868484601088dabd875e227e0fe1dd0df8a217c5
