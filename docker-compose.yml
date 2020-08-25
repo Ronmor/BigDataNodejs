@@ -3,8 +3,10 @@
 version: '3'
 
 networks:
-        clusternetwork:
-
+    clusternetwork:
+        ipam:
+            config:
+                - subnet: 172.16.0.0/24
 
 services:
   zoo1:
@@ -41,39 +43,38 @@ services:
       - zoo1
       
   web:
-<<<<<<< HEAD
     image: nodemon
-#    build: .
-=======
-    image: nodeapp
->>>>>>> 868484601088dabd875e227e0fe1dd0df8a217c5
+    build: 
+        context: .
+        dockerfile: Dockerfile
     command: "node app.js"
     ports:
-      - "3501:3501"
+      - "3000:3000"
     depends_on:
       - "mongo"
 
   mongo:
     image: "mongo"
     ports:
-      - "27017:27017"
-<<<<<<< HEAD
-  adminmongo:
-    image: "mrvautin/adminmongo"
-    ports:
-      - "1234:1234"    
-  redis:
-    image: "redis:alpine"
-    ports:
-      - "6379:6379"
-=======
+      - "27017:27017"    
     networks:
         clusternetwork:
             ipv4_address: 172.16.0.3
     command: mongod --bind_ip 127.0.0.1,172.16.0.3
+
+  redis:
+    image: "redis"
+    networks:
+        clusternetwork:
+            ipv4_address: 172.16.0.2
+    ports:
+      - "6379:6379"
   
   consomer:
     image: consumer
+    build:
+        context: .
+        dockerfile: consumer_dockerfile
     networks:
         clusternetwork:
             ipv4_address: 172.16.0.5
@@ -87,4 +88,3 @@ services:
     
     
     
->>>>>>> 868484601088dabd875e227e0fe1dd0df8a217c5

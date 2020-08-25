@@ -25,9 +25,17 @@ const Consumer = new Kafka.Consumer(kafkaConf);
   //
   //console.log(todo);
 //})
+let redis = require('redis'),Redisclient  = redis.createClient({
+    port      : 6379,               // replace with your port
+    host      : '172.16.0.2',        // replace with your hostanme or IP address
+  });
+
 
 Consumer.connect();
 
+Redisclient.on('connect', function() {
+    console.log('Redis client connected');
+});
 
 Consumer
   .on('ready', function() {
@@ -53,6 +61,8 @@ Consumer
 			db.close();
   });
 });
-		
+var nd = new Date().setHours(23,59,59);
+var expire = Math.floor((nd-Date.now())/1000);
+Redisclient.set(JSON.parse(message.value.toString()).id, message.value.toString(), 'EX', expire,redis.print);		
 
     });
