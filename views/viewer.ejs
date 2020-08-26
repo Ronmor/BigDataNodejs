@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://gurayyarar.github.io/AdminBSBMaterialDesign/pages/charts/chartjs.html -->
+<html class="chrome"><head>
+	<title>Analytics</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Viewer</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Favicon-->
+		<!-- fontawesome -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- weather icons -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+	<!-- stylesheet -->
+	<link rel="stylesheet" type="text/css" href="./css/newstyle.css">
+
+    
+</head>
+
+<body class="theme-red">
+    
+
+
+
+    
+            <div class="row clearfix">
+                <!-- Line Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>LINE CHART</h2>
+                        </div>
+                        <div class="body"><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource.html"></iframe>
+                            <canvas id="line_chart" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart1 = document.getElementById('line_chart').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.global.defaultFontFamily = 'Lato';
+                            Chart.defaults.global.defaultFontSize = 16;
+                            Chart.defaults.global.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart1 = new Chart(myChart1, {
+                              type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{
+                                labels:['ירושלים','תל אביב','באר שבע'],
+                                datasets:[{
+                                  label:'שיחות טלפון',
+                                  data:[
+                                    66,
+                                    58,
+                                    30,
+                                    0
+                                  ],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+                                title:{
+                                  display:true,
+                                  text:'שיחות למוקד חירום',
+                                  fontSize:25
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Line Chart -->
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- Bar Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>BAR CHART</h2>
+                        </div>
+                        <div class="body"><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource(1).html"></iframe>
+                            <canvas id="bar_chart" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart2 = document.getElementById('bar_chart').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.global.defaultFontFamily = 'Lato';
+                            Chart.defaults.global.defaultFontSize = 16;
+                            Chart.defaults.global.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart2 = new Chart(myChart2, {
+                              type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{
+                                labels:['ירושלים','תל אביב','באר שבע'],
+                                datasets:[{
+                                  label:'שיחות טלפון',
+                                  data:[
+                                    66,
+                                    58,
+                                    30,
+                                    0
+                                  ],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+                                title:{
+                                  display:true,
+                                  text:'שיחות למוקד חירום',
+                                  fontSize:20
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Bar Chart -->
+            </div>
+
+
+
+
+
+
+
+
+            <div class="row clearfix">
+                <!-- Radar Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Today's statistics</h2>
+                        </div>
+                        <div class="body"><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource(2).html"></iframe>
+                            <canvas id="doughnut_chart" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart = document.getElementById('doughnut_chart').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.defaultFontFamily = 'Lato';
+                            Chart.defaults.defaultFontSize = 16;
+                            Chart.defaults.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart = new Chart(myChart, {
+                              type:'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{
+                                labels:['רגיעה','שגרת חירום','חירום'],
+                                datasets:[{
+                                  label:'שיחות טלפון',
+                                  data:[
+                                    66,
+                                    58,
+                                    30,
+                                    0
+                                  ],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+                                title:{
+                                  display:true,
+                                  text:'התפלגות השיחות על פי סוג הבקשה',
+                                  fontSize:25
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Radar Chart -->
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- Pie Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Today's statistics</h2>
+                        </div>
+                        <div class="body"><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource(3).html"></iframe>
+                            <canvas id="pie_chart" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart4 = document.getElementById('pie_chart').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.defaultFontFamily = 'Lato';
+                            Chart.defaults.defaultFontSize = 16;
+                            Chart.defaults.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart4 = new Chart(myChart4, {
+                              type:'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{
+                                labels:['עברית','רוסית','אנגלית','אמהרית','ערבית','תאילנדית'],
+                                datasets:[{
+                                  label:'שיחות טלפון',
+                                  data:[
+                                    66,
+                                    58,
+                                    30,
+									12,
+									6,
+                                    1
+                                  ],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+                                title:{
+                                  display:true,
+                                  text:'התפלגות השיחות לפי שפה',
+                                  fontSize:25
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Pie Chart -->
+				</div>
+				
+			<div class="row clearfix">	
+                <!-- BAR Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Real Time Statistics</h2>
+                        </div>
+                        <div class="body">
+						<iframe class="chartjs-hidden-iframe2" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource.html"></iframe>
+                            <canvas id="bar_chart2" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart5 = document.getElementById('bar_chart2').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.global.defaultFontFamily = 'Lato';
+                            Chart.defaults.global.defaultFontSize = 16;
+                            Chart.defaults.global.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart5 = new Chart(myChart5, {
+                              type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{
+                                labels:['שיחות ממתינות בתור','זמן המתנה ממוצע'],
+                                datasets:[{
+                                  label:'שיחות טלפון',
+                                  data:[
+                                    13,
+                                    52,
+									0
+                                  ],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+                                title:{
+                                  display:true,
+                                  text:'זמני המתנה ממוצעים ושיחות ממתינות',
+                                  fontSize:25
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Line Chart -->
+				
+				<!-- BAR Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>התפלגות יומית לפי נושא השיחה</h2>
+                        </div>
+                        <div class="body">
+						<iframe class="chartjs-hidden-iframe3" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource.html"></iframe>
+                            <canvas id="bar_chart3" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart6 = document.getElementById('bar_chart3').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.global.defaultFontFamily = 'Lato';
+                            Chart.defaults.global.defaultFontSize = 16;
+                            Chart.defaults.global.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart6 = new Chart(myChart6, {
+                              type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{      //תרופות, מזון, מים, מיגון, מידע, פינוי, טיפול רפואי )
+                                labels:['טיפול רפואי', 'פינוי', 'מידע', 'מיגון', 'מים', 'מזון', 'תרופות'],
+                                datasets:[{
+                                  label:'שיחות טלפון',
+                                  data:[
+                                    13,
+                                    52,
+									8,
+									13,
+									25,
+									45,
+									3,
+									0
+                                  ],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+                                title:{
+                                  display:true,
+                                  text:'פלח ההתפלגות:',
+                                  fontSize:25
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Line Chart -->
+            </div>
+			
+			
+			<div class="row clearfix">	
+                <!-- BAR Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Real Time Statistics</h2>
+                        </div>
+                        <div class="body">
+						<iframe class="chartjs-hidden-iframe8" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource.html"></iframe>
+                            <canvas id="line_chart2" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart7 = document.getElementById('line_chart2').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.global.defaultFontFamily = 'Lato';
+                            Chart.defaults.global.defaultFontSize = 16;
+                            Chart.defaults.global.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart7 = new Chart(myChart7, {
+                              type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{
+                                labels:['0','5','10','15','20','25','30','35','40','45','50','55','60'],		
+                                datasets:[{
+                                  label:'זמן ההמתנה הממוצע בשניות',
+                                  data: [{ // x = minutes , y = hours
+									  x: 10,
+									  y: 10
+								   }, {
+							          x: 15,
+									  y: 10
+								   }, {
+							          x: 15,
+									  y: 1
+								   }, {
+							          x: 15,
+									  y: 2
+								   }, {
+							          x: 25,
+									  y: 2
+								   }, {
+							          x: 15,
+									  y: 3
+								   }, {
+							          x: 35,
+									  y: 2
+								   }, {
+							          x: 55,
+									  y: 2
+								   }, {
+							          x: 5,
+									  y: 4
+								   }, {
+							          x: 15,
+									  y: 8
+								   }, {
+							          x: 35,
+									  y: 3
+								   }, {
+							          x: 55,
+									  y: 14
+								   }, {
+							          x: 15,
+									  y: 20
+								   }, {
+							          x: 15,
+									  y: 20
+								   }],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+								scales: {
+								  xAxes: [{
+									display: true,
+									ticks: {
+										beginAtZero: true,
+										steps: 15,
+										stepSize: 2
+									},									
+									scaleLabel: {
+										display: true,
+										labelString: '5 minutes intervals'
+									}										
+										}],
+								  yAxes: [{
+									display: true,
+									ticks: {
+										beginAtZero: true,
+										steps: 23,
+										stepSize: 1,
+										max: 23
+									},
+									scaleLabel: {
+										display: true,
+										labelString: 'hour'
+									}
+								  }]
+								},								
+                                title:{
+                                  display:true,
+                                  text:'זמני המתנה ממוצעים ושיחות ממתינות במהלך כל היום , באגרגציה של חמש דקות',
+                                  fontSize:18
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Line Chart -->
+				
+				<!-- BAR Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2> התפלגות יומית לפי היישוב ממנו התבצעה השיחה</h2>
+                        </div>
+                        <div class="body">
+						<iframe class="chartjs-hidden-iframe8" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;" src="./ChartJS _ Bootstrap Based Admin Template - Material Design_files/saved_resource.html"></iframe>
+                            <canvas id="bar_chart8" height="220" width="440" style="display: block; width: 440px; height: 220px;"></canvas>
+                        </div>
+                        <script>
+                            let myChart8 = document.getElementById('bar_chart8').getContext('2d');
+                        
+                            // Global Options
+                            Chart.defaults.global.defaultFontFamily = 'Lato';
+                            Chart.defaults.global.defaultFontSize = 16;
+                            Chart.defaults.global.defaultFontColor = 'white';
+                            //המערכת צריכה להציג את מספר השיחות הממתינות כרגע
+                            //ואת זמן ההמתנה הממוצע בעשר הדקות האחרונות
+                            let massPopChart8 = new Chart(myChart8, {
+                              type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                              //נצטרך להעביר מידע מהרדיס לדאטה,זה בנתיים הדיפולט
+                              data:{      //תרופות, מזון, מים, מיגון, מידע, פינוי, טיפול רפואי )
+                                labels:['אשקלון', 'באר שבע', 'אשדוד', 'נהריה', 'תל אביב', 'חיפה', 'ירושלים'],
+                                datasets:[{
+                                  label:'שיחות טלפון',
+                                  data:[
+                                    13,
+                                    52,
+									8,
+									13,
+									25,
+									45,
+									3,
+									0
+                                  ],
+                                  //backgroundColor:'green',
+                                  backgroundColor:[
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)',
+                                    'rgba(255, 99, 132, 0.6)'
+                                  ],
+                                  borderWidth:1,
+                                  borderColor:'#777',
+                                  hoverBorderWidth:1,
+                                  hoverBorderColor:'#000'
+                                }]
+                              },
+                              options:{
+                                title:{
+                                  display:true,
+                                  text:'התפלגות בין יישובים',
+                                  fontSize:25
+                                },
+                                legend:{
+                                  display:true,
+                                  position:'right',
+                                  labels:{
+                                    fontColor:'#000'
+                                  }
+                                },
+                                layout:{
+                                  padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                  }
+                                },
+                                tooltips:{
+                                  enabled:true
+                                }
+                              }
+                            });
+                          </script>
+                    </div>
+                </div>
+                <!-- #END# Line Chart -->
+            </div>
+        </div>
+    </section>
+
+
+
+</body></html>
