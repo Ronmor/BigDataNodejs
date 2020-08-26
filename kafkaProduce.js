@@ -25,9 +25,14 @@ producer.on("ready", function(arg) {
 });
 producer.connect();
 
+producer.on('uncaughtException', function (err) {
+    console.log(err);
+});
+
 module.exports.publish= function(msg)
 {   
   m=JSON.stringify(msg);
-  producer.produce(topic, -1, genMessage(m), uuid.v4());  
+  producer.produce(topic, -1, genMessage(m), uuid.v4());
+  console.log(`kafka producer is succesfully publishing`);  
   //producer.disconnect();   
 }

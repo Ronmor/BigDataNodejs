@@ -1,5 +1,9 @@
 const uuid = require("uuid");
 const Kafka = require("node-rdkafka");
+const rejson = require('redis-rejson');
+
+const redis = require('redis');
+rejson(redis);
 
 const kafkaConf = {
   "group.id": "cloudkarafka-example",
@@ -20,14 +24,14 @@ var url = "mongodb://172.16.0.3:27017/mydb";
 
 const Consumer = new Kafka.Consumer(kafkaConf);
 
-//Consumer.on("message", (message) => {
- // const todo = JSON.parse(message.value);
-  //
-  //console.log(todo);
-//})
-let redis = require('redis'),Redisclient  = redis.createClient({
+Consumer.on("message", (message) => {
+  const todo = JSON.parse(message.value);  
+  console.log(todo);
+})
+
+let Redisclient  = redis.createClient({
     port      : 6379,               // replace with your port
-    host      : '172.16.0.2',        // replace with your hostanme or IP address
+    host      : '172.16.0.2'        // replace with your hostanme or IP address
   });
 
 
@@ -47,6 +51,7 @@ Consumer
 	
     // Read one message every 1000 seconds
     setInterval(function() {
+//	  console.log('Kafka consumer is consuming..');	
       Consumer.consume();
     }, 60);
   }).on('data', message => {
@@ -63,6 +68,13 @@ Consumer
 });
 var nd = new Date().setHours(23,59,59);
 var expire = Math.floor((nd-Date.now())/1000);
-Redisclient.set(JSON.parse(message.value.toString()).id, message.value.toString(), 'EX', expire,redis.print);		
-
+//Redisclient.set(JSON.parse(message.value.toString()).id, message.value.toString(), 'EX', expire,redis.print);
+//let dummy_key = 'dummy_key';
+console.log('just before function set');
+var keyObject = JSON.stringify(message);		
+Redisclient.json_set(JSON.parse(message.value.toString()).id.toString(), keyObject, function(err) {
+	if (err) throw err;
+	console.log('parsed to json');
+});
+Redisclient.expireat(JSON.parse(message.value.toString()).id, expire);
     });

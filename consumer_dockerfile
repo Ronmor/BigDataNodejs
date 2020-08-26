@@ -30,4 +30,4 @@ COPY . .
 # EXPOSE 3000
 # CMD ["ls", "Views"]
 # CMD ["pwd"]
-CMD [ "node", "kafkaConsume.js" ]
+CMD [ "node", "--trace-deprecation", "kafkaConsume.js" ]
